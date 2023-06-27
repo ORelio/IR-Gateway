@@ -1,7 +1,7 @@
-/* ============================================ */
-/* IR Gateway v1.0 - (c) 2023 ORelio - CCDL 1.0 */
-/* https://opensource.org/license/cddl-1-0/     */
-/* ============================================ */
+/* ============================================== */
+/* IR Gateway v1.0.1 - (c) 2023 ORelio - CCDL 1.0 */
+/* https://opensource.org/license/cddl-1-0/       */
+/* ============================================== */
 
 // WiFi Configurator
 // https://github.com/tzapu/WiFiManager
@@ -68,7 +68,7 @@ void apiHomepage() {
   html += "      <div><img src=\"data:image/gif;base64,R0lGODlhMAAwAHMAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQJCgAPACwAAAAAMAAwAIMA/gDtHCQAAAAGBws8PUtqaXiampqzs7PNzc3+/v4AAAAAAAAAAAAAAAAAAAAAAAAE//DJSau9MmiNu//VJoJkOYmbqZbj6nrpC8ZPm3EyphV8cNO0HCVAKPIKvpotKCQWjQHkEMeUOZ/G3omKE9aw2AJB+is3wWExOVZdXdFjrTLZNr2LibS823Xdn3lPR0leIYCBBIhxZIUnYAmIiEeMjX+QcIONGXCXaJmVYACHnnKFdwCieKSUOVeXqKmKi4ReroGogHq0rXBFuImCpbWPssBZrFZokIhvn6acgRvBu7y9WFfOw9adx9TJxsqKwsPLeMXdmq5Y59na1mDjZ+vc8PHVj5j2vLLsyOTmuYL5kxew3CxNhopJGvjsXBZvCIk41JdOVT2ICL+QwphR40KOGRCdBKLYcdPDkjPigERppmQEADs=\"></div>\r\n";
   html += "      <div>\r\n";
   html += "        <h1>IR Gateway <span class=\"blink\">_</span></h1>\r\n";
-  html += "        <span class=\"version-info\">v1.0.0 - By ORelio</span>\r\n";
+  html += "        <span class=\"version-info\">v1.0.1 - By ORelio</span>\r\n";
   html += "      </div>\r\n";
   html += "    </div>\r\n";
   html += "    <h2>Wi-Fi Status</h2>\r\n";
@@ -216,6 +216,8 @@ void setup(void) {
   // Wi-Fi
   Serial.println("Running Wi-Fi Manager");
   WiFi.setHostname("IR-Gateway");
+  wifiManager.setConnectTimeout(10);
+  wifiManager.setConnectRetries(2);
   wifiManager.autoConnect();
 
   // IR Sender
